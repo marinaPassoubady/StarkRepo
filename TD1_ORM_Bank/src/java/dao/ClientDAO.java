@@ -9,6 +9,7 @@ import model.Client;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -40,9 +41,15 @@ public class ClientDAO {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        return  (Client) em.createQuery("SELECT * from Client c where c.numeroClient=:idClient")
-                .setParameter("idClient", id)
-                .getSingleResult();
+        
+        Client c = em.find(Client.class, id);
+        /*TypedQuery<Client> query = em.createQuery("Select c From Client c Where c.numeroClient = :idClient",Client.class)
+            .setParameter("idClient",id);
+       
+        Client c= query.getSingleResult();*/
+        em.close();
+        
+        return c;
     }
     
     public void delete(String id){

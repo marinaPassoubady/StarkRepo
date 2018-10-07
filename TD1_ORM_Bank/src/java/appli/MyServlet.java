@@ -48,9 +48,13 @@ public class MyServlet extends HttpServlet {
         
          ClientDAO cDAO = new ClientDAO();
         Date d = new Date();
-        Client c = new Client("12387678","jeya","sothix",d);
-        cDAO.create(c);
+        //Client c = new Client("12377678","jeya","sothix",d);
+        //cDAO.create(c);
         System.out.println("ah");
+        
+        Client c2 = cDAO.findById("12387678");
+        
+        System.out.println(c2.getNom());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
