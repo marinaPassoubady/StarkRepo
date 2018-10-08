@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DAO;
+package dao;
 
+import java.util.List;
 import model.Client;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
+import javax.persistence.Query;
 
 /**
  *
@@ -17,10 +18,17 @@ import javax.persistence.TypedQuery;
  */
 public class ClientDAO {
     
-    public ClientDAO(){ 
+    public EntityManager emf;
+    public ClientDAO(EntityManager em){ 
+        this.emf = em;
     }
+    
+    public ClientDAO() {
+        
+    }
+    
     public void create (Client c){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_Bank_SauvPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         em.persist(c);
@@ -29,7 +37,7 @@ public class ClientDAO {
     }
     
     public void update (Client cNew){
-       EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
+       EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_Bank_SauvPU");
        EntityManager em = emf.createEntityManager();
        em.getTransaction().begin();
        em.merge(cNew);
@@ -38,7 +46,7 @@ public class ClientDAO {
     }
     
     public Client findById(String id){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_Bank_SauvPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         
@@ -52,11 +60,25 @@ public class ClientDAO {
         return c;
     }
     
-    public void delete(String id){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
+    public List<Client> findAll() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_Bank_SauvPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
+
+        Query query = em.createQuery("Select c From Client c");
+       
+        List<Client> lClients = query.getResultList();
+        em.close();
+        
+        return lClients;
+    }
+    
+    public void delete(String id){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_Bank_SauvPU");
+        EntityManager em = emf.createEntityManager();
         Client c = findById(id);
+        em.getTransaction().begin(); 
+        c = em.merge(c);
         em.remove(c);
         em.getTransaction().commit();
         em.close();

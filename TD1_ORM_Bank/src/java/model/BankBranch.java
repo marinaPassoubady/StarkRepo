@@ -30,6 +30,15 @@ public class BankBranch implements Serializable {
     
     @OneToMany(mappedBy = "banque")
     private Collection<Account> comptes;
+    
+    public BankBranch() {
+        
+    }
+    
+    public BankBranch (int code, Adresse ad) {
+        this.codeAgence = code;
+        this.adresseAgence = ad;
+    }
 
     public int getCodeAgence() {
         return codeAgence;

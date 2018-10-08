@@ -5,17 +5,28 @@
  */
 package dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 import model.Account;
-import model.Client;
 
 /**
  *
  * @author Ilangovane
  */
 public class AccountDAO {
+    
+    //public EntityManager em;
+    
+    public AccountDAO(EntityManager em) {
+        //this.em = em;
+    }
+    
+    public AccountDAO() {
+        
+    }
     
     public void create (Account a){
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
@@ -42,12 +53,24 @@ public class AccountDAO {
         
         Account c = em.find(Account.class, id);
         /*TypedQuery<Client> query = em.createQuery("Select c From Client c Where c.numeroClient = :idClient",Client.class)
-            .setParameter("idClient",id);
-       
+            .setParameter("idClient",id);      
         Client c= query.getSingleResult();*/
         em.close();
         
         return c;
+    }
+    
+    public List<Account> findAll() {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+
+        Query query = em.createQuery("Select a From Account a");
+       
+        List<Account> lAccounts = query.getResultList();
+        em.close();
+        
+        return lAccounts;
     }
     
     public void delete(String id){
