@@ -6,10 +6,13 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 /**
@@ -37,6 +40,24 @@ public class Account implements Serializable {
     @ManyToOne
     @JoinColumn(name="agence_fk")
     private BankBranch banque;
+    
+    @ManyToMany
+    @JoinTable(name="clients",
+            joinColumns= @JoinColumn (name="a_id", referencedColumnName="numeroCompte"),
+            inverseJoinColumns=@JoinColumn(name="c_id", referencedColumnName="numeroClient"))
+    private Collection<Client> clients;
+    
+    public Account() {
+        
+    }
+    
+    public Account(String numero, String lib, String IBAN, double solde, BankBranch bq) {
+        this.numeroCompte = numero;
+        this.libelle = lib;
+        this.IBAN = IBAN; 
+        this.solde = solde;
+        this.banque = bq;
+    }
 
     public BankBranch getBanque() {
         return banque;
@@ -78,6 +99,14 @@ public class Account implements Serializable {
 
     public void setNumeroCompte(String id) {
         this.numeroCompte = id;
+    }
+    
+    public Collection<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(Collection<Client> clients) {
+        this.clients = clients;
     }
 
     @Override

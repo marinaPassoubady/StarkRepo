@@ -14,7 +14,7 @@ import javax.persistence.Embeddable;
  * @author Sothiya
  */
 @Embeddable
-class Adresse implements Serializable {
+public class Adresse implements Serializable {
     
    @Column
    private String numero;

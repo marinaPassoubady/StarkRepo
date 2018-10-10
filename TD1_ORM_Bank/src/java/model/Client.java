@@ -6,10 +6,12 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -34,6 +36,10 @@ public class Client implements Serializable {
     @Column
     @Temporal(TemporalType.DATE)
     private Date dateNaiss;
+    
+    @ManyToMany(mappedBy = "clients")
+    private Collection<Account> mesComptes;
+
 
     public Client(String numeroClient, String nom, String prenom, Date dateNaiss) {
         this.numeroClient = numeroClient;
@@ -85,7 +91,15 @@ public class Client implements Serializable {
     public void setDateNaiss(Date dateNaiss) {
         this.dateNaiss = dateNaiss;
     }
+    
+    public Collection<Account> getMesComptes() {
+        return mesComptes;
+    }
 
+    public void setMesComptes(Collection<Account> mesComptes) {
+        this.mesComptes = mesComptes;
+    }
+    
     @Override
     public int hashCode() {
         int hash = 0;

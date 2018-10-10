@@ -29,7 +29,7 @@ public class AccountDAO {
     }
     
     public void create (Account a){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_Bank_SauvPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         em.persist(a);
@@ -38,7 +38,7 @@ public class AccountDAO {
     }
     
     public void update (Account a){
-       EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
+       EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_Bank_SauvPU");
        EntityManager em = emf.createEntityManager();
        em.getTransaction().begin();
        em.merge(a);
@@ -47,7 +47,7 @@ public class AccountDAO {
     }
     
     public Account findById(String id){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_Bank_SauvPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         
@@ -61,7 +61,7 @@ public class AccountDAO {
     }
     
     public List<Account> findAll() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_Bank_SauvPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
 
@@ -74,7 +74,7 @@ public class AccountDAO {
     }
     
     public void delete(String id){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_Bank_SauvPU");
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         Account a = findById(id);

@@ -7,6 +7,8 @@ package dao;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.Query;
 import model.BankBranch;
 
@@ -27,8 +29,8 @@ public class BankBranchDAO {
     }
 
     public void create (BankBranch b){
-        //EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
-        //EntityManager em = emf.createEntityManager();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_Bank_SauvPU");
+        EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         em.persist(b);
         em.getTransaction().commit();
@@ -36,8 +38,8 @@ public class BankBranchDAO {
     }
     
     public void update (BankBranch bNew){
-       //EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
-       //EntityManager em = emf.createEntityManager();
+       EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_Bank_SauvPU");
+       EntityManager em = emf.createEntityManager();
        em.getTransaction().begin();
        em.merge(bNew);
        em.getTransaction().commit();
@@ -45,8 +47,8 @@ public class BankBranchDAO {
     }
     
     public BankBranch findById(String id){
-        //EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
-        //EntityManager em = emf.createEntityManager();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_Bank_SauvPU");
+        EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         
         BankBranch c = em.find(BankBranch.class, id);
@@ -60,8 +62,8 @@ public class BankBranchDAO {
     }
     
     public List<BankBranch> findAll() {
-        //EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
-        //EntityManager em = emf.createEntityManager();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_Bank_SauvPU");
+        EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
 
         Query query = em.createQuery("Select b From BankBranch b");
@@ -73,8 +75,8 @@ public class BankBranchDAO {
     }
     
     public void delete(String id){
-        //EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_ORM_BankPU");
-        //EntityManager em = emf.createEntityManager();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("TD1_Bank_SauvPU");
+        EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         BankBranch b = findById(id);
         em.remove(b);

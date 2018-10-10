@@ -8,16 +8,19 @@ package appli;
 import dao.ClientDAO;
 import dao.AccountDAO;
 import dao.BankBranchDAO;
+import dao.DAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.Account;
+import model.BankBranch;
 import model.Client;
-
+import model.Adresse;
 /**
  *
  * @author Ilangovane
@@ -49,37 +52,41 @@ public class MyServlet extends HttpServlet {
             out.println("</html>");
         }
         
-        ClientDAO cDAO = new ClientDAO();
-        AccountDAO aDAO = new AccountDAO();
-        BankBranchDAO bDAO = new BankBranchDAO();
-        
-        //TEST CLIENT DAO
+        //TEST CREATE
         Date d = new Date();
-        Client c1 = new Client("99999999","jon.s","sothix",d);
+        Client c1 = new Client("85698569","jon.s","sothix",d);
         Client c2 = new Client("77777777","pass","marina",d);
         
-        //test du create
-        cDAO.create(c1);
-        cDAO.create(c2);
-
-        //test findAll
-        System.out.println(cDAO.findAll().size()); //2
+        Adresse ad = new Adresse("10","rue des etoiles","Trappes","78190");
         
-        //test update c1 + findById
+        BankBranch bb = new BankBranch(10002,ad);
+        Adresse a = new Adresse();
+        Account a1 = new Account("10000000001","compteCourantSotix","41257896354ADFGSD784ZE2300Q",10,bb);
+        Account a2 = new Account("10000000002","compteCourantMarina","41257896354ADFGSD999FGVDS56",150,bb);
+        
+        DAO dao = new DAO();
+        
+        dao.create(c1);
+        dao.create(c2);
+        dao.create(bb);
+        dao.create(a1);
+        dao.create(a2);
+        
+        //TEST UPDATE
         c1.setNom("kingNorth");
-        cDAO.update(c1);
-        Client c3 = cDAO.findById(c1.getId());
-        System.out.println(c3.getNom() + " " + c3.getPrenom());
+        dao.update(c1);
         
-        //test delete
-        cDAO.delete(c2.getId());
-        System.out.println(cDAO.findAll().size()); //3
+        a1.setLibelle("compteCourantUpdatedSotix123");
+        a2.setLibelle("compteCourantKhal");
+        dao.update(a1);
+        dao.update(a2);
         
-        //TEST ACCOUNT DAO
-        Account a1 = new Account();
+        //TEST FINDALL
+        System.out.println(dao.findAll("Account").size());
         
-        Account a2 = new Account();
-        //aDAO.create();
+        //TEST DELETE
+        dao.delete(c2);
+   
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
