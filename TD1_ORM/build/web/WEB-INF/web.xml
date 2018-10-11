@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>MyServlet</servlet-name>
+        <servlet-class>appli.MyServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyServlet</servlet-name>
+        <url-pattern>/MyServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>AjouterServlet</servlet-name>
+        <servlet-class>appli.AjouterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AjouterServlet</servlet-name>
+        <url-pattern>/ajouter</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>GestionClientServlet</servlet-name>
+        <servlet-class>appli.GestionClientServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GestionClientServlet</servlet-name>
+        <url-pattern>/gestionclient</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>GestionCompteServlet</servlet-name>
+        <servlet-class>appli.GestionCompte</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GestionCompteServlet</servlet-name>
+        <url-pattern>/gestioncompte</url-pattern>
+    </servlet-mapping>
+</web-app>
