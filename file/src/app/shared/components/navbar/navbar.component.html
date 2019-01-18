@@ -1,0 +1,26 @@
+<!--This nav bar should be displayed only when logged in -->
+<!-- Navigation fixed-top-->
+<nav class="navbar navbar-expand-md navbar-dark bg-dark " style="padding-left: 100px;">
+    <div class="container" style="margin-left: 0%;margin-right:0%">
+        <img class="push-left" src="../../../assets/images/img_nav.jpg" routerLink="/home" style="width:4%;margin-right:11px" alt="logo"/>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link text-white" routerLink="/home" routerLinkActive="active">
+                        <span class="fa fa-home"></span> Accueil </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" routerLink="/test1" routerLinkActive="active">
+                        <span class="fa fa-wrench"></span> Marché</a>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+</nav>
+<router-outlet></router-outlet>

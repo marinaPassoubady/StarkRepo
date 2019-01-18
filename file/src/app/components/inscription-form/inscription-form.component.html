@@ -1,0 +1,64 @@
+<form [formGroup]="pokeForm" class="form-horizontal center_div">
+
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="Nom">Nom</label>
+        <div class="col-md-4">
+            <input id="Nom" name="Nom" type="text" formControlName="nom" placeholder="Nom" class="form-control input-md">
+
+        </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="prenom">Prénom</label>
+        <div class="col-md-4">
+            <input id="prenom" name="prenom" type="text" formControlName="prenom" placeholder="Prénom"
+                   class="form-control input-md">
+
+        </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="mail">Adresse mail</label>
+        <div class="col-md-4">
+            <input id="mail" name="mail" type="text" formControlName="mail" placeholder="Mail"
+                   class="form-control input-md">
+
+        </div>
+    </div>
+
+    <!-- Password input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="motDePasse">Mot de Passe</label>
+        <div class="col-md-4">
+            <input id="motDePasse" name="motDePasse" type="password" formControlName="motDePasse"
+                   placeholder="Mot de Passe" class="form-control input-md">
+
+        </div>
+    </div>
+
+    <!-- Multiple Radios (inline) -->
+    <div class="form-group">
+        <label class="col-md-4">Choix du starter</label>
+        <div class="col-md-4">
+            <div *ngFor="let pokemon of starters">
+                <label class="radio-inline">
+                    <input type="radio"
+                           formControlName="starter"
+                           name="starter"
+                           value="{{pokemon.order}}">
+                    <img src="{{pokemon.sprite}}">
+                </label>
+            </div>
+        </div>
+
+        <label class="col-md-4 control-label"></label>
+        <div class="col-md-4">
+            <button class="btn btn-primary" [disabled]="!pokeForm.valid" (click)="validate()">Valider</button>
+        </div>
+    </div>
+
+
+</form>

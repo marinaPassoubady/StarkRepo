@@ -1,0 +1,98 @@
+
+.container {
+    padding: 25px;
+    position: fixed;
+}
+
+.form-login {
+    /*background-color: #a3afcc;*/
+    padding-top: 2.3em;
+}
+
+h4 {
+    border:0 solid #fff;
+    border-bottom-width:1px;
+    padding-bottom:10px;
+    text-align: center;
+}
+.form-group-input{
+    padding-top: 1.2em;
+}
+.form-control {
+    border-radius: 5px;
+}
+
+.wrapper {
+    text-align: center;
+}
+
+/**
+ * FORM input
+ */
+
+input, input[placeholder] {
+    text-align: center;
+}
+
+.login-form-tittle
+{
+    color: black;
+}
+
+.form-login-margin
+{
+    padding-left: 11em;
+}
+
+.login-img
+{
+    width: 50%;
+    height: 50%;
+}
+.form-input
+{
+    border:none;
+}
+.form-input:focus{
+    zoom: 1.03;
+}
+.form-input::placeholder{
+    font-size: 1.5em;
+    color : peru;
+}
+input[type=text]:focus:not([readonly]).purple-border
+{
+    border: 1px solid #3889c8;
+}
+/**
+ * BUTTON Animation
+ */
+.shake {
+    -webkit-animation-name: shake;
+    animation-name: shake;
+}
+
+
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    animation: shake 3s 3;
+}
+
+@keyframes shake{
+    0%, 100% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        -webkit-transform: translate3d(-10px, 0, 0);
+        transform: translate3d(-7px, 0, 0);
+    }
+
+    20%, 40%, 60%, 80% {
+        -webkit-transform: translate3d(10px, 0, 0);
+        transform: translate3d(7px, 0, 0);
+    }
+}

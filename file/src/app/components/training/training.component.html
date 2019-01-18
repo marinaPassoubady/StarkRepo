@@ -1,0 +1,77 @@
+<div class="training-area">
+    <button class="btn btn-primary training-area-button" (click)="launchTraining(trainingModal)">Entraîner</button>
+</div>
+
+<ng-template #trainingModal>
+
+
+    <div *ngIf="hasEvolved;then evolution else xpUpgrade"></div>
+    <ng-template #xpUpgrade>
+        <div class="modal-header">
+            <h5 class="modal-title">Entraînement !</h5>
+        </div>
+        <div class="modal-body">
+            <div class="d-flex justify-content-center">
+                <div class="flex-fill">
+                    <div>
+                        <img class="training-modal-sprite" [src]="pokemonSelected?.sprite" alt="pokemon">
+                    </div>
+                    <div class="text-center">
+                        {{pokemonSelected.name}}
+                    </div>
+                </div>
+                <div class="flex-fill align-self-center">
+                    <div class="text-center">
+                        <p>Ancien Xp : {{pokemonSelected.xp}}</p>
+                        <p>Ancien niveau : {{pokemonSelected.level}}</p>
+                    </div>
+                </div>
+                <div class="flex-fill align-self-center">
+                    <div class="text-center">
+                        <p>Nouvel xp : {{pokemonTrained.xp}}</p>
+                        <p>Nouveau niveau : {{pokemonTrained.level}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="finishTraining(trainingModal)">Ok !</button>
+        </div>
+    </ng-template>
+    <ng-template #evolution>
+        <div class="modal-header">
+            <h5 class="modal-title">Evolution !</h5>
+        </div>
+        <div class="modal-body">
+            <div class="d-flex justify-content-center">
+                <div class="flex-fill">
+                    <div>
+                        <img class="training-modal-sprite" [src]="pokemonSelected?.sprite" alt="pokemon">
+                    </div>
+                    <div class="text-center">
+                        {{pokemonSelected.name}}
+                        <p>Ancien Xp : {{pokemonSelected.xp}}</p>
+                        <p>Ancien niveau : {{pokemonSelected.level}}</p>
+                    </div>
+                </div>
+                <div class="flex-fill align-self-center text-center">évolue en : </div>
+                <div class="flex-fill">
+                    <div>
+                        <img class="training-modal-sprite" [src]="pokemonTrained?.sprite" alt="pokemon">
+                    </div>
+                    <div class="text-center">
+                        {{pokemonTrained.name}}
+                        <p>Nouvel xp : {{pokemonTrained.xp}}</p>
+                        <p>Nouveau niveau : {{pokemonTrained.level}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="finishEvolution(trainingModal)">Cool !</button>
+        </div>
+    </ng-template>
+
+
+</ng-template>
+

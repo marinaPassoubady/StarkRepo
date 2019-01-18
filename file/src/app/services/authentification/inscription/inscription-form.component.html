@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col"></div>
+        <div class="col-6">
+            <form [formGroup]="pokeForm" class="form-horizontal center_div">
+                <fieldset>
+                    <!-- Form Name -->
+                    <legend class="text-center font-weight-bold text-form"><span class="fas fa-file-invoice"></span> Inscription</legend>
+
+                    <!--<label class="col-md-4 control-label" for="Nom">Nom</label>-->
+                    <input id="Nom" name="Nom" type="text" formControlName="nom" placeholder="Nom" class="form-control input-md">
+                    <br>
+                    <!--<label class="col-md-4 control-label" for="prenom">Prénom</label>-->
+                    <input id="prenom" name="prenom" type="text" formControlName="prenom" placeholder="Prénom" class="form-control input-md">
+                    <br>
+                    <!--<label class="col-md-4 control-label" for="mail">Adresse mail</label>-->
+                    <input id="mail" name="mail" type="text" formControlName="mail" placeholder="Mail" class="form-control input-md">
+                    <br>
+                    <!--<label class="col-md-4 control-label" for="motDePasse">Mot de Passe</label>-->
+                    <input id="motDePasse" name="motDePasse" type="password" formControlName="motDePasse" placeholder="Mot de Passe" class="form-control input-md">
+                    <br>
+                    <!-- Multiple Radios (inline) -->
+                    <div class="row">
+                        <label class="col-md-2"></label>
+                            <div *ngFor="let pokemon of starters">
+                                <div class="col">
+                                    <label class="radio-inline">
+                                        <input type="radio"
+                                               formControlName="starter"
+                                               name="starter"
+                                               value="{{pokemon.order}}">
+                                        <img src="{{pokemon.sprite}}">
+                                    </label>
+                                </div>
+                            </div>
+                    </div>
+                    <button class="btn btn-primary pull-right" [disabled]="!pokeForm.valid" (click)="validate()">Valider <span class="fa fa-arrow-right"></span> </button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>

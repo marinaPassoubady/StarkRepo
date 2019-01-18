@@ -1,0 +1,79 @@
+<div class="pokemon container">
+  <div class="pokemon-detail">
+    <h1 class="pokemon-detail-title">Infos du pokemon</h1>
+      <div class="pokemon-detail-content">
+        <div class="row">
+        <div class="col-lg-2">
+          <img [src]="pokemon?.sprite" alt="pokemon" class="pokemon-detail-content-icon">
+        </div>
+        <div class="col-lg-10">
+          <form class="pokemon-detail-content-form">
+            <div class="form-group row">
+              <label for="nom" class="col-lg-2 col-form-label">Nom</label>
+              <div class="col-lg-3">
+                <input type="text" readonly class="form-control" id="nom" [value]="pokemon?.name"
+                       placeholder="Disabled input">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="type" class="col-lg-2 col-form-label">Type</label>
+              <div class="col-lg-3">
+                <input type="text" readonly class="form-control" id="type" [value]="pokemon?.type"
+                       placeholder="Disabled input">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="sexe" class="col-lg-2 col-form-label">Niveau</label>
+              <div class="col-lg-3">
+                <input type="text" readonly class="form-control" id="sexe" [value]="pokemon?.level"
+                       placeholder="Disabled input">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="niveau" class="col-lg-2 col-form-label">Sexe</label>
+              <div class="col-lg-3">
+                <input type="text" readonly class="form-control" id="niveau" [value]="pokemon?.sexe"
+                       placeholder="Disabled input">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="poids" class="col-lg-2 col-form-label">Poids</label>
+              <div class="col-lg-3">
+                <input type="text" readonly class="form-control" id="poids" [value]="pokemon?.weight"
+                       placeholder="Disabled input">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="taille" class="col-lg-2 col-form-label">Taille</label>
+              <div class="col-lg-3">
+                <input type="text" readonly class="form-control" id="taille" [value]="pokemon?.height"
+                       placeholder="Disabled input">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="prix" class="col-lg-2 col-form-label">Prix</label>
+              <div class="col-lg-3">
+                <input type="text" readonly class="form-control" id="prix" [value]="pokemon?.price"
+                       placeholder="Disabled input">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-lg-2 col-form-label">Attaque</label>
+              <div class="col-lg-3">
+                <ul *ngFor="let attack of pokemon?.attack">
+                  <li>{{attack}}</li>
+                </ul>
+              </div>
+            </div>
+          </form>
+          <button type="submit" class="btn btn-danger pokemon-detail-content-button">Vendre</button>
+          <div>
+            <app-training [pokemonSelected]=pokemon></app-training>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

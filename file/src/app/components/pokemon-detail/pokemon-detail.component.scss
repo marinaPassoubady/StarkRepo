@@ -1,0 +1,24 @@
+.pokemon {
+  &-detail{
+    &-title{
+      text-align: center;
+    }
+
+    &-content{
+      &-icon{
+        width: 250px;
+      }
+      &-form{
+        margin-top: 6%;
+        margin-left: 26%;
+        margin-right: 2%;
+      }
+      &-button{
+        margin-top: 34px;
+        margin-left: 28%;
+        width: 24%;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,23 @@
+<div class="container">
+
+    <div class="container gallery-container">
+
+        <h1 class="text-center">Mes Pokemons</h1>
+
+        <div class="tz-gallery">
+
+            <div class="row mb-3" *ngFor="let pokemon of dresseur.pokemons">
+                <div class="col-md-4">
+                    <div class="card">
+                        <a class="lightbox" [routerLink]="['/detail', pokemon.order]">
+                            <img src="{{pokemon.sprite}}" class="card-img-top">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

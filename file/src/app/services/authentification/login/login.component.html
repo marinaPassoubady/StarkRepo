@@ -1,0 +1,35 @@
+<div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-9 form-login-margin">
+                <form [formGroup]="formModel" #f="ngForm" (ngSubmit)="login()" *ngIf="!authService.isLoggedIn" class="form-login">
+                    <fieldset>
+                        <!-- Form Name -->
+                        <legend class="text-center font-weight-bold text-form login-form-tittle">
+                            <img src="../../../../assets/images/pokemon.png" class="login-img">
+                        </legend>
+                        <div class="form-group-input">
+                            <input type="text" class="form-control input-sm user-input form-input" placeholder="Nom utilisateur .." formControlName="form_user"/>
+                            <hr>
+                            <input type="password" class="form-control input-sm pass-input form-input" placeholder="Mot de passe.." formControlName="form_pass" />
+                        </div>
+                        <div class="wrapper">
+                            <br>
+                            <div class="pull-right">
+                                <span class="group-btn">
+                                    <button name="btnConnex" type="submit" class="btn btn-success btn-md" style="display:none;">Connexion <i class="fa fa-sign-in"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                    <div class="pull-right"> Pas encore inscrit ?
+                        <a class="login-form-tittle" href="/inscription">
+                            C'est par ici !
+                        </a>
+                    </div>
+            </div>
+            <div class="col"></div>
+        </div>
+
+</div>
